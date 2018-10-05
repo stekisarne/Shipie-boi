@@ -22,6 +22,8 @@ public class scoreScript : MonoBehaviour
         {
             scoreText.text = timeCount.ToString();
             timeCount = timeCount + 1;
+
+            print("Timer: " + timeCount);
         }
 	}
 }
