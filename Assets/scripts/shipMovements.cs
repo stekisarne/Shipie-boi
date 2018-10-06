@@ -22,53 +22,54 @@ public class shipMovements : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        ySpawn = Random.Range(-4.02f, 4.02f);
-        xSpawn = Random.Range(-7.98f, 8.01f);
-        pos = new Vector2(xSpawn, ySpawn);
-        transform.position = pos;
+        forwardSpeed = Random.Range(1, 16); //ger forwardSpeed ett slumpmässigt värde
+        ySpawn = Random.Range(-4.02f, 4.02f); //skapar ett slumpmässigt tal
+        xSpawn = Random.Range(-7.98f, 8.01f); //skapar ett slumpmässigt tal
+        pos = new Vector2(xSpawn, ySpawn); //ger variabeln pos ett slumpmässigt värde
+        transform.position = pos; //sätter positionen till pos
     }
     // Update is called once per frame
     void Update()
     {
 
-        //när D är nertryckt så roterar skeppet åt höger och blir blå
-        if (Input.GetKey(KeyCode.A))
+        
+        if (Input.GetKey(KeyCode.A)) //kollar om du trycker på "A"
         {
-            shipRend.color = leftColor;
-            transform.Rotate(0f, 0f, leftRotation * Time.deltaTime);
+            shipRend.color = leftColor; //sätter färgen på skeppet till leftColor
+            transform.Rotate(0f, 0f, leftRotation * Time.deltaTime); //roterar skeppet åt leftRotation
         }
         
-        //när A är nertryckt så roterar skeppet åt vänster och blir grön
-        if (Input.GetKey(KeyCode.D))
+        
+        if (Input.GetKey(KeyCode.D)) //kollar om du trycker på "D"
         {
-            shipRend.color = rightColor;
-            transform.Rotate(0f, 0f, rightRotation * Time.deltaTime);
+            shipRend.color = rightColor; //sätter färgen på skeppet till rightColor
+            transform.Rotate(0f, 0f, rightRotation * Time.deltaTime); //roterar skeppet åt rightRotation
         }
         
-        //när S är nertryckt halverar farten
-        if (Input.GetKeyDown(KeyCode.S))
+        
+        if (Input.GetKeyDown(KeyCode.S)) //kollar om "S" är nertryckt
         {
-            forwardSpeed = forwardSpeed / 2;
+            forwardSpeed = forwardSpeed / 2; //sätter farten till hälften
         }
         
-        //när S släpps igen går farten tillbaka
-        if (Input.GetKeyUp(KeyCode.S))
+        
+        if (Input.GetKeyUp(KeyCode.S)) //kollar om "S" är släppt igen
         {
-            forwardSpeed = forwardSpeed * 2;
+            forwardSpeed = forwardSpeed * 2; //sätter farten tillbaka till förra farten
         }
         
-        //gör så att skeppet rör sig framåt hela tiden
-        transform.Translate(forwardSpeed * Time.deltaTime, 0, 0, Space.Self);
         
-        //när du trycker space väljer den en slumpmässig färg
-        if (Input.GetKeyDown(KeyCode.Space))
+        transform.Translate(forwardSpeed * Time.deltaTime, 0, 0, Space.Self); //skickar fram skeppet hela tiden i forwardSpeed fart
+        
+        
+        if (Input.GetKeyDown(KeyCode.Space)) //kollar om "space" är nedtryckt 
         {
-            red = Random.Range(0f, 1f);
-            green = Random.Range(0f, 1f);
-            blue = Random.Range(0f, 1f);
+            red = Random.Range(0f, 1f); //ger red ett slumpmässigt värde
+            green = Random.Range(0f, 1f); //ger green ett slumpmässigt värde
+            blue = Random.Range(0f, 1f); //ger blue ett slumpmässigt värde
 
-            spaceColor = new Color(red, green, blue);
-            shipRend.color = spaceColor;
+            spaceColor = new Color(red, green, blue); // ger spaceColor ett värde av en slumpmässig färg
+            shipRend.color = spaceColor; //ger skeppet en slumpmässig färg
         }
     }
 }
