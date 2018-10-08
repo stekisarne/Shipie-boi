@@ -18,15 +18,36 @@ public class shipMovements : MonoBehaviour
     public float ySpawn;
     public float xSpawn;
     public Vector2 pos;
+    public SpriteRenderer sRend;
+    public Sprite sprite1;
+    public Sprite sprite2;
+    public Sprite sprite3;
+    public int randomSprite;
 
     // Use this for initialization
     void Start()
     {
-        forwardSpeed = Random.Range(1, 16); //ger forwardSpeed ett slumpmässigt värde
+        forwardSpeed = Random.Range(4, 11); //ger forwardSpeed ett slumpmässigt värde
         ySpawn = Random.Range(-4.02f, 4.02f); //skapar ett slumpmässigt tal
         xSpawn = Random.Range(-7.98f, 8.01f); //skapar ett slumpmässigt tal
         pos = new Vector2(xSpawn, ySpawn); //ger variabeln pos ett slumpmässigt värde
         transform.position = pos; //sätter positionen till pos
+        randomSprite = Random.Range(1, 4);
+
+        if (randomSprite == 1) //kollar om randomSprite = 1
+        {
+            sRend.sprite = sprite1; //sätter spriten till sprite1
+        }
+
+        else if(randomSprite == 2) //kollar om randomSprite = 2
+        {
+            sRend.sprite = sprite2; //sätter spriten till sprite2
+        }
+
+        else 
+        {
+            sRend.sprite = sprite3; //sätter spriten till sprite3
+        }
     }
     // Update is called once per frame
     void Update()
