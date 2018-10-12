@@ -27,5 +27,6 @@ public class scoreScript : MonoBehaviour
 
             print("Timer: " + timeCount); //skriver ut "Timer: x"
         }
+
 	}
 }
